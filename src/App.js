@@ -1,23 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
+import IlanList from './components/IlanList';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <h1>İş İlan Portalı</h1>
+      <div className="header">
+
+        <div className="arama_kutusu">
+          <input type="text" placeholder="İş ilanı Arayın"/>
+          <button id="arama_butonu">Ara</button>
+        </div>
+      </div>
+      <IlanList/>
     </div>
   );
 }

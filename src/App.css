@@ -1,38 +1,65 @@
-.App {
-  text-align: center;
+body{
+  background-color: #eee;
+}
+.App{
+  padding: 30px;
+  box-sizing: border-box;
+}
+.header{
+  width: 95%;
+  background-color: rgb(187,187,187);
+  padding: 40px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.arama_kutusu{
+  width: 80%;
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.arama_kutusu input{
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  background-color: white;
+  color: #414141;
+  padding-left: 40px;
+  box-sizing: border-box;
+  border: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.arama_kutusu button{
+  width: 75px;
+  height: 50px;
+  background-color: rgb(13, 105, 211);
   color: white;
+  border-radius: 8px;
+  border-color: rgb(0,54,99);
+  position: absolute;
+  top: 0px;
+  right: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+.ilan{
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 16px 0;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.ilan img{
+  max-width: 100%;
+  height: auto;
+}
+.ilan-baslik{
+  font-size: 1.5em;
+  margin-bottom: 8px;
+}
+.ilan-aciklama{
+  margin-bottom: 8px;
+}
+.ilan-lokasyon,
+.ilan-katagori{
+  font-style: italic;
+  color: #555;
 }
