@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { is_ilanlari_veriler } from '../components/IlanList'; 
 
 const IlanDetay = () => {
+    
     const { id } = useParams(); 
     const ilan = is_ilanlari_veriler[id];
 
