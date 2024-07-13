@@ -14,7 +14,7 @@ const IlanDetay = () => {
     return (
         <div className="ilan-detay">
             <h1>{ilan.job_title}</h1>
-            <img src="D:\Çalışmalar\Unityacademy\is-ilan-portali\public\images" alt={ilan.job_title}/>
+            <img src="../images/job_image.jpg" alt={ilan.job_title}/>
             <p>{ilan.job_description}</p>
             <p>Konum: {ilan.location}</p>
             <p>Kategori: {ilan.category}</p>
