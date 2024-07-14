@@ -74,26 +74,41 @@ export const is_ilanlari_veriler = [
     }
 ];
 
-const IlanKartlari = ({ ilan, index }) => (
+const highlightText = (text, searchTerm) => {
+    if (!searchTerm) return text;
+    const parts = text.split(new RegExp(`(${searchTerm})`, 'gi'));
+    return parts.map((part, index) =>
+        part.toLowerCase() === searchTerm.toLowerCase() ? <b key={index}>{part}</b> : part
+    );
+};
+
+const IlanKartlari = ({ ilan, index, searchTerm }) => (
     <div className="ilan">
-        <div className="ilan-baslik"> <Link to={`/ilan/${index}`}>{ilan.job_title}</Link></div>
+        <div className="ilan-baslik">
+            <Link to={`/ilan/${index}`}>{highlightText(ilan.job_title, searchTerm)}</Link>
+        </div>
         <img src={ilan.job_image_url} alt={ilan.job_title} />
-        <div className='ilan-aciklama'>{ilan.job}</div>
-        <div className='ilan-lokasyon'>Konum: {ilan.location}</div>
-        <div className='ilan-katagori'>Kategori: {ilan.category}</div>
-       
+        <div className='ilan-aciklama'>{highlightText(ilan.job_description, searchTerm)}</div>
+        <div className='ilan-lokasyon'>Konum: {highlightText(ilan.location, searchTerm)}</div>
+        <div className='ilan-katagori'>Kategori: {highlightText(ilan.category, searchTerm)}</div>
     </div>
 );
 
-const IlanList = () => {
+const IlanList = ({ searchTerm }) => {
+    const filteredJobs = is_ilanlari_veriler.filter(ilan => 
+        ilan.job_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ilan.job_description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ilan.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        ilan.category.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+
     return (
         <div id="ilan-listesi">
-            {is_ilanlari_veriler.map((ilan, index) => (
-                <IlanKartlari key={index} index={index} ilan={ilan}/>
+            {filteredJobs.map((ilan, index) => (
+                <IlanKartlari key={index} index={index} ilan={ilan} searchTerm={searchTerm} />
             ))}
         </div>
     );
 };
 
 export default IlanList;
-
