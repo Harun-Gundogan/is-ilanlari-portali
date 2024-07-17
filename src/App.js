@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import IlanList from './components/IlanList';
-import IlanDetay from './pages/IlanDetay';
-import AramaSonuclari from './pages/AramaSonuclari';
+import IlanDetay from './components/IlanDetay';
+import AramaSonuclari from './components/AramaSonuclari';
 import './App.css';
 
 function App() {
