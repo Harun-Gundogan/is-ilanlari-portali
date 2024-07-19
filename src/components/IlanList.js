@@ -91,28 +91,26 @@ const IlanKartlari = ({ ilan, index, searchTerm }) => (
         <div className='ilan-aciklama'>{highlightText(ilan.job_description, searchTerm)}</div>
         <div className='ilan-lokasyon'>Konum: {highlightText(ilan.location, searchTerm)}</div>
         <div className='ilan-katagori'>Kategori: {highlightText(ilan.category, searchTerm)}</div>
-        
     </div>
 );
 
-
-
-const IlanList = ({ searchTerm,location, category }) => {
+const IlanList = ({ searchTerm, location, category }) => {
     const filteredJobs = is_ilanlari_veriler.filter((ilan) => {
-    const matchesSearchTerm = ilan.job_title.toLowerCase().includes(searchTerm.toLowerCase());
-    const matchesLocation = location ? ilan.location === location : true;
-    const matchesCategory = category ? ilan.category === category : true;
-    return matchesSearchTerm && matchesLocation && matchesCategory;
-});
-
-   
+        const matchesSearchTerm = ilan.job_title.toLowerCase().includes(searchTerm.toLowerCase()) || ilan.job_description.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesLocation = location ? ilan.location === location : true;
+        const matchesCategory = category ? ilan.category === category : true;
+        return matchesSearchTerm && matchesLocation && matchesCategory;
+    });
 
     return (
         <div id="ilan-listesi">
-            {filteredJobs.map((ilan, index) => (
-                <IlanKartlari key={index} index={index} ilan={ilan} searchTerm={searchTerm} />
-               
-            ))}
+            {filteredJobs.length > 0 ? (
+                filteredJobs.map((ilan, index) => (
+                    <IlanKartlari key={index} index={index} ilan={ilan} searchTerm={searchTerm} />
+                ))
+            ) : (
+                <center><div><b>İlan bulunamadı</b></div></center>
+            )}
         </div>
     );
 };

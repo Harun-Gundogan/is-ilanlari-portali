@@ -52,10 +52,10 @@ function App() {
           <option value="Proje Yönetimi">Proje Yönetimi</option>
           <option value="DevOps">DevOps</option>
         </select>
-        <button id="arama_butonu" onClick={handleSearch}>Ara</button>
+        <button id="arama_butonu" >Ara</button>
       </div><br/>
       <Routes>
-        <Route path="/" element={<IlanList searchTerm={searchTerm} />} />
+        <Route path="/" element={<IlanList searchTerm={searchTerm} location={location} category={category} />} />
         <Route path="/ilan/:id" element={<IlanDetay />} />
         <Route path="/search" element={<AramaSonuclari />} />
       </Routes>

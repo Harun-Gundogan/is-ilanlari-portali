@@ -13,16 +13,12 @@ const AramaSonuclari = () => {
   const location = query.get('location') || '';
   const category = query.get('category') || '';
 
-  const filteredJobs = is_ilanlari_veriler.filter(ilan =>
-    (searchTerm ? (
-      ilan.job_title.includes(searchTerm) ||
-      ilan.job_description.includes(searchTerm) ||
-      ilan.location === location ||
-      ilan.category === category
-    ) : true) &&
-    (location ? ilan.location === location : true) &&
-    (category ? ilan.category === category : true)
-  );
+  const filteredJobs = is_ilanlari_veriler.filter(ilan => 
+    ilan.job_title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    ilan.job_description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    ilan.location.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    ilan.category.toLowerCase().includes(searchTerm.toLowerCase())
+);
 
   return (
     <div id="ilan-listesi">
@@ -31,7 +27,7 @@ const AramaSonuclari = () => {
           <IlanKartlari key={index} index={index} ilan={ilan} />
         ))
       ) : (
-       <center><div><b>İlan bulunamadı</b></div></center> 
+        <center><div><b>İlan bulunamadı</b></div></center> 
       )}
     </div>
   );
